@@ -1,5 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.vesseltracker.test" version="1.0.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.vesseltracker.test" 
+    version="1.0.5" 
+    xmlns="http://www.w3.org/ns/widgets" 
+    xmlns:cdv="http://cordova.apache.org/ns/1.0" 
+    xmlns:gap="http://phonegap.com/ns/1.0"
+    versionCode="105">
     <name>VesselTracker</name>
     <description>
         Track your BSM vessels!

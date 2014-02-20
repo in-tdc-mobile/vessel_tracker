@@ -23,7 +23,7 @@
     <icon src="img/icon_72.png" width="72" height="72" />
     <icon src="img/icon_48.png" width="48" height="48" />
     <icon src="img/icon_36.png" width="36" height="36" />
-    <feature name="http://api.phonegap.com/1.0/file" />
+    <!-- <feature name="http://api.phonegap.com/1.0/file" /> -->
     <feature name="http://api.phonegap.com/1.0/network" />
     <feature name="http://api.phonegap.com/1.0/notification" />
     <feature name="http://api.phonegap.com/1.0/device" />

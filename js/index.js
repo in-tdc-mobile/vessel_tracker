@@ -1814,11 +1814,13 @@ var layer2;
 
         var pin = e.target;
         var description = pin.description;
-        var html = "<div class='star'><a class='star_a' id='"+ description[4] +"' href='javascript:void(0)' onclick='add_bookmark(this.id);'><img src='img/star.png' class='star_i' id='i_"+ description[4] +"' width=25 height=25 /></a></div>";
-        html += "<span class='infobox_title'>" + pin.title + "</span><br/>" ;
-        html+= "</br><b>Lag / Log:</b>"+prsflt(description[0])+"/"+prsflt(description[1])+"("+description[2]+")<br/> <b>Speed / Course:</b>"+description[3]+"<br/>";
-        html += '<span class="popup_label"><button onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana;padding:5px;" title="vessel wiki">Additional Details</button></span>';
-        html +='<span class="popup_label"><button onclick="show_vessel_path('+description[4]+','+description[5]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show Track</button></span>';
+        var html_array = new Array();
+        html_array.push("<div class='star'><a class='star_a' id='"+ description[4] +"' href='javascript:void(0)' onclick='add_bookmark(this.id);'><img src='img/star.png' class='star_i' style='margin-right: 4px;' id='i_"+ description[4] +"' width=25 height=25 /></a></div>");
+
+        html_array.push("<span class='infobox_title'>" + pin.title + "</span><br/>") ;
+        html_array.push("</br><b>Lag / Log:</b>"+prsflt(description[0])+"/"+prsflt(description[1])+"("+description[2]+")<br/> <b>Speed / Course:</b>"+description[3]+"<br/>");
+        html_array.push('<span class="popup_label"><button onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana;padding:5px;" title="vessel wiki">Additional Details</button></span>');
+        html_array.push('<span class="popup_label"><button onclick="show_vessel_path('+description[4]+','+description[5]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show Track</button></span>');
     /*    html += '<div style="padding-top: 7px;">'+
       '<span class="popup_label"><button  onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="vessel wiki">Additional Details</a></span>' +
       '<span class="popup_label"><button onclick="show_fav_on_map('+description[4]+')" class="show_on_map" id=map_'+description[4]+' style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show On Map</a></span>'+
@@ -1831,7 +1833,7 @@ var layer2;
         infobox.setOptions({
           visible:true,
           offset: new Microsoft.Maps.Point(-33, 20),
-          htmlContent: pushpinFrameHTML.replace('{content}', html)
+          htmlContent: pushpinFrameHTML.replace('{content}', html_array.join(""))
         });
         show_bookmarks_stars();
       }

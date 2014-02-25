@@ -411,6 +411,8 @@ border: 1px solid #141414;
 }
 
 .infobox_title {
+    position: absolute;
+    top: 16px;
     font-weight: bold;
     font-size: 15px;
 }

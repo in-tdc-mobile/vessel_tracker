@@ -641,6 +641,7 @@ function print_favorites_result(my_array) {
 
             function show_fav_on_map(vname) {
               $(".favorites").hide();
+              $(".results").hide();
               $(".favorites").html();
               $('#trackermap').show();
               //var query = $('#vessel_name').val();

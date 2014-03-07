@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <widget xmlns = "http://www.w3.org/ns/widgets" 
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id="com.vesseltracker.test"
-        version="1.0.6"
+        id="com.bsmvesseltracker.v1"
+        version="1.1.2"
         versionCode="106">
 
     <name>VesselTracker</name>

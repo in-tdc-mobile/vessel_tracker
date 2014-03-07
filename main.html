@@ -13,14 +13,15 @@
       com.vesseltracker.test - android
       include ratchet_android_overload.css   
     -->
-        
+
     <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
     <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png"/>
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="css/ratchet.css" />
     <link rel="stylesheet" type="text/css" href="css/ratchet_android_overload.css" /> 
     
     <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/add2home.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     
     <!-- <link rel="apple-touch-icon" href="logo.png"> -->
@@ -151,7 +152,7 @@
             <label for="name">Password </label>
             <input type="password" id='login_password'>
           </div> -->
-        
+
           <div class="input-group">
             <div class="input-row">
               <label>BSM Email</label>
@@ -175,10 +176,10 @@
         </form>
       </div> -->
       <!-- <div id="search_box"> -->
-        <form id="search_form">
-          <input type="text" placeholder="Search for a Vessel / Port" id="vessel_name"/>
-          <!-- <ul id="suggestions" data-role="listview" data-inset="true"></ul> -->
-        </form>
+      <form id="search_form">
+        <input type="text" placeholder="Search for a Vessel / Port" id="vessel_name"/>
+        <!-- <ul id="suggestions" data-role="listview" data-inset="true"></ul> -->
+      </form>
       <!-- </div> -->
       <div style="clear:both;"> </div>
 
@@ -201,40 +202,40 @@
       <div class='error' id='ajax_error'> Sorry, there was a temporary error. Please try again in a minute</div>
 
      <!--  <div class='footer'>
-    </div> -->
-    <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
-    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <!-- Dynamic <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>   --> 
+   </div> -->
+   <script charset="UTF-8" type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1"></script>
+   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <!-- Dynamic <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>   --> 
 
-    <!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&libraries=weather"></script>-->
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/ratchet.js"></script>
-    <script src="js/jstorage.js"></script>
-    <script src="js/markerclusterer.js"></script>
-    <script type="text/javascript">
+   <!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true&libraries=weather"></script>-->
+   <script src="js/jquery-ui.js"></script>
+   <script src="js/ratchet.js"></script>
+   <script src="js/jstorage.js"></script>
+   <script src="js/markerclusterer.js"></script>
+   <script type="text/javascript">
     $(document).on("mobileinit", function(){
         //apply overrides here
         $.mobile.allowCrossDomainPages = true;
         $.support.cors = true;
       });
-    </script>
-     <script>
-  $(function() {
-    var icons = {
-      header: "ui-icon-circle-arrow-e",
-      activeHeader: "ui-icon-circle-arrow-s"
-    };
-    $( "#accordion" ).accordion({
-      icons: icons
+  </script>
+  <script>
+    $(function() {
+      var icons = {
+        header: "ui-icon-circle-arrow-e",
+        activeHeader: "ui-icon-circle-arrow-s"
+      };
+      $( "#accordion" ).accordion({
+        icons: icons
+      });
+      $( "#toggle" ).button().click(function() {
+        if ( $( "#accordion" ).accordion( "option", "icons" ) ) {
+          $( "#accordion" ).accordion( "option", "icons", null );
+        } else {
+          $( "#accordion" ).accordion( "option", "icons", icons );
+        }
+      });
     });
-    $( "#toggle" ).button().click(function() {
-      if ( $( "#accordion" ).accordion( "option", "icons" ) ) {
-        $( "#accordion" ).accordion( "option", "icons", null );
-      } else {
-        $( "#accordion" ).accordion( "option", "icons", icons );
-      }
-    });
-  });
   </script>
     <!-- <script type="text/javascript" src="js/cordova.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -242,6 +243,7 @@
     <script type="text/javascript" src="cordova_plugins.js"></script> -->
     <!-- <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script> -->
     <script type="text/javascript" charset="utf-8" src="js/plugins/PushNotification.js"></script>
+    <script type="text/javascript" src="js/add2home.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
 
   </body>

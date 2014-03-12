@@ -978,8 +978,8 @@ function show_sdc_settings() {
       $('#search_form').show();
       $('#vessel_name').show();
       $('#top_home').show();
-      $('#top_settings').show();
-      $('#top_worldmap').show();
+      // $('#top_settings').show();
+      // $('#top_worldmap').show();
 
       //Setting the values from jstorage
       sdc_settings = JSON.parse($.jStorage.get("sdc_settings"));
@@ -1158,7 +1158,7 @@ function show_sdc_settings() {
         'password': password
       };
       req = $.ajax({
-        url: 'https://getVesselTracker.com/ldap_test.php',
+        url: 'https://getVesselTracker.com/enip/enip_php/ldap_test.php',
         type: "post",
         data: form_data,
         beforeSend: function() {
@@ -1758,12 +1758,12 @@ var layer2;
         Microsoft.Maps.Pushpin.prototype.title = null;
         Microsoft.Maps.Pushpin.prototype.description = null;
       }
-
+var temp;
       function createPin(data, clusterInfo) {
         var pin = new Microsoft.Maps.Pushpin(clusterInfo.center);
-
+        
         pin.title =  data.Name;
-        pin.description = [data.latitude,data.longitude,data.datetime,data.speed,data.imo];//data.latitude+"@/"+data.longitude+"@/"+data.datetime+"@/"+data.speed+"@/"+data.imo;
+        pin.description = [data.latitude,data.longitude,data.datetime,data.speed,data.imo,data.eta,data.destination];//data.latitude+"@/"+data.longitude+"@/"+data.datetime+"@/"+data.speed+"@/"+data.imo;
         //Add handler for the pushpin click event.
 
         Microsoft.Maps.Events.addHandler(pin, 'click', displayEventInfo);
@@ -1816,12 +1816,13 @@ var layer2;
         var pin = e.target;
         var description = pin.description;
         var html_array = new Array();
-        html_array.push("<div class='star'><a class='star_a' id='"+ description[4] +"' href='javascript:void(0)' onclick='add_bookmark(this.id);'><img src='img/star.png' class='star_i' style='margin-right: 4px;' id='i_"+ description[4] +"' width=25 height=25 /></a></div>");
-
+        // html_array.push("<div class='star'><a class='star_a' id='"+ description[4] +"' href='javascript:void(0)' onclick='add_bookmark(this.id);'><img src='img/star.png' class='star_i' style='margin-right: 4px;' id='i_"+ description[4] +"' width=25 height=25 /></a></div>");
+        temp = description;
         html_array.push("<span class='infobox_title'>" + pin.title + "</span><br/>") ;
         html_array.push("</br><b>Lag / Log:</b>"+prsflt(description[0])+"/"+prsflt(description[1])+"("+description[2]+")<br/> <b>Speed / Course:</b>"+description[3]+"<br/>");
-        html_array.push('<span class="popup_label"><button onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana;padding:5px;" title="vessel wiki">Additional Details</button></span>');
-        html_array.push('<span class="popup_label"><button onclick="show_vessel_path('+description[4]+','+description[5]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show Track</button></span>');
+        html_array.push("<b>Destination / ETA :</b>"+description[6]+"/"+description[5]+"<br/>");
+        // html_array.push('<span class="popup_label"><button onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana;padding:5px;" title="vessel wiki">Additional Details</button></span>');
+        html_array.push('<span class="popup_label"><button onclick="show_vessel_path('+description[4]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show Track</button></span>');
     /*    html += '<div style="padding-top: 7px;">'+
       '<span class="popup_label"><button  onclick="fetch_vessel_wiki('+description[4]+')" style="color:#00303f;font:bold 12px verdana; padding:5px;" title="vessel wiki">Additional Details</a></span>' +
       '<span class="popup_label"><button onclick="show_fav_on_map('+description[4]+')" class="show_on_map" id=map_'+description[4]+' style="color:#00303f;font:bold 12px verdana; padding:5px;" title="click to see track">Show On Map</a></span>'+
@@ -1864,7 +1865,7 @@ var layer2;
                   dat.push(new DataModel(data[i]['asset-name'], lat_lon['lat'], lat_lon['lon'],
                     prsflt(data[i]['speed-value-of-value']) + " " + data[i]['speed-units-of-value'].toLowerCase() + ", " + data[i]['heading-value-of-value'] + " " + data[i]['heading-units-of-value'].toLowerCase(),
                     data[i]['trail-date-time'],
-                    data[i]['i-m-o-number']));
+                    data[i]['i-m-o-number'], data[i]['eta'], data[i]['destination'] ));
 
                 }
               } else {
@@ -1876,7 +1877,7 @@ var layer2;
                     dat.push(new DataModel(data[i][j]['asset-name'], lat_lon['lat'], lat_lon['lon'], 
                       prsflt(data[i][j]['speed-value-of-value'])+data[i][j]['speed-units-of-value'], 
                       prsflt(data[i][j]['speed-value-of-value']) + " " + data[i][j]['speed-units-of-value'].toLowerCase() + ", " + data[i][j]['heading-value-of-value'] + " " + data[i][j]['heading-units-of-value'].toLowerCase(),
-                      data[i][j]['i-m-o-number']));
+                      data[i][j]['i-m-o-number'], data[i]['eta'], data[i]['destination']));
                   }
                 }
               }
@@ -1901,13 +1902,15 @@ var layer2;
         });      
 }
 
-var DataModel = function (name, latitude, longitude, speed, datetime, imo) {
+var DataModel = function (name, latitude, longitude, speed, datetime, imo, eta, destination) {
   this.Name = name;
   this.latitude = latitude;
   this.longitude = longitude;
   this.speed = speed;
   this.datetime = datetime;
   this.imo = imo;
+  this.eta = eta;
+  this.destination = destination;
 };
 
 function closeInfobox() {

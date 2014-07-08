@@ -148,7 +148,7 @@
           listeningElement.setAttribute('style', 'display:none;');
           receivedElement.setAttribute('style', 'display:block;');
 
-          console.log('Received Event: ' + id);
+          //console.log('Received Event: ' + id);
         }
       };
 
@@ -661,7 +661,7 @@ function print_favorites_result(my_array) {
               } else {
                 q2_url = "https://getVesselTracker.com/vessel_tracker.php?source=purplefinder&vessel_name="+query+"&sdc_settings="+JSON.stringify(sdc_settings) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
               }
-              console.debug(q2_url);
+              //console.debug(q2_url);
               GetMap();
               // RequestData(q2_url);
               req = $.ajax({
@@ -868,7 +868,13 @@ function show_sdc_settings() {
         }*/
 
         if (auto_update_map == false) {
-          window.clearInterval();
+          window.clearInterval(setInterval(function(){myTimer()}, 1000));
+        }
+
+        function myTimer() {
+            var d = new Date();
+            var t = d.toLocaleTimeString();
+            document.getElementById("trackermap").innerHTML = t;
         }
 
         sdc_settings = sdc_settings2;
@@ -1667,7 +1673,7 @@ open_info_window = infowindow;
         },
 
         success : function(response) {
-          console.debug(url);
+          //console.debug(url);
           $(".spinner").hide();
           var previous_positions_lat_lon = new Array();
 
@@ -1794,6 +1800,7 @@ var layer2;
 
 
       function RequestDataCallback(response) { 
+
         if (response != null) {
           map.setView({center: new Microsoft.Maps.Location(response[0].latitude, response[0].longitude)});
           myLayer.SetData(response);
@@ -1845,7 +1852,7 @@ var layer2;
 
     function get_imo(callback, url) {
 
-     console.debug(url);
+     //console.debug(url);
 
      $.ajax({
             url: url,//+'&bounds='+bounds,
@@ -1917,8 +1924,20 @@ function closeInfobox() {
 function hideInfobox(e) {
   infobox.setOptions({ visible: false });
 }
+
+
+
+
 /*-----End Map Dataload---------*/
 
 /******************Start Sccordion******************/
 
     /******************End Sccordion******************/
+
+
+/*
+window.onerror = function(msg, url, linenumber) {
+    alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    return true;
+}
+*/

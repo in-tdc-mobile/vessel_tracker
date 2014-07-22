@@ -1706,9 +1706,10 @@ open_info_window = infowindow;
 var vessel_path_plotted;
 var layer2;
     // Function to Show ship_track
-    function plot_vessel_track(current_position_lat_lon,previous_positions_lat_lon) {
+    function plot_vessel_track(current_position_lat_lon, previous_positions_lat_lon) {
 
-
+      
+      map.entities.remove(vessel_path_plotted);
 
       //MapLayer.Children.Clear();
     // map.entities.clear();
@@ -1721,11 +1722,12 @@ var layer2;
       }
       map.setView({center: new Microsoft.Maps.Location(current_position_lat_lon['lat'], current_position_lat_lon['lon'])});
       var line = new Microsoft.Maps.Polyline(lineVertices);
-      layer2 = new Microsoft.Maps.EntityCollection();
-      layer2.push(line);
+      /*layer2 = new Microsoft.Maps.EntityCollection();
+      layer2.push(line);*/
       /*vessel_path_plotted = line;
       map.entities.remove(vessel_path_plotted);*/
-      map.entities.push(layer2);
+      vessel_path_plotted = line;
+      map.entities.push(line);
     }
 
     // show_vessel_positions();

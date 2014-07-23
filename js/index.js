@@ -1821,7 +1821,6 @@ var layer2;
 
       function displayEventInfo(e) {
 
-
         var pin = e.target;
         var description = pin.description;
         var html_array = new Array();
@@ -1937,8 +1936,8 @@ function hideInfobox(e) {
     /******************End Sccordion******************/
 
 
-/*
-window.onerror = function(msg, url, linenumber) {
+
+/*window.onerror = function(msg, url, linenumber) {
     alert('Error message: '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
     return true;
 }

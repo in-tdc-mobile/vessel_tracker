@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vessel Tracker</title>
+		<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+		<script type="text/javascript">
+			function goAjax() {
+				var url = "https://getVesselTracker.com/seafarer_dev/get_sf_emp_details.php?empid=141600";
+			    $.ajax({
+			        url: url,
+			        datatype: 'text',
+			        beforeSend: function() {
+			        },
+
+			        success : function(data) {
+			            if(data[0] != null) {
+			                alert(data[0]['sur_name']);
+			            }
+			        },
+
+			        error: function (request, status, error) {
+			        	alert("request:"+request);
+			            alert("status:"+status);
+			            alert("error:"+error);
+			        }
+			    });
+			}
+
+			function goText() {
+				var url = "https://getVesselTracker.com/testajax.txt";
+			    $.ajax({
+			        url: url,
+			        datatype: 'text',
+			        beforeSend: function() {
+			        },
+
+			        success : function(data) {
+			            alert(data);
+			        },
+
+			        error: function (request, status, error) {
+			        	alert("request:"+request);
+			            alert("status:"+status);
+			            alert("error:"+error);
+			        }
+			    });
+			}
+
+		</script>
+  	</head>
+  	<body>
+  		<input type="button" onclick="goAjax()" value="Call goAjax">
+  		<input type="button" onclick="goText()" value="Call goText">
+  	</body>
+</html>

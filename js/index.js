@@ -406,18 +406,21 @@ else vessel_details_arr['Management Type'] += '- )';
           var vessel_contact_details = new Array();
           var mobile_num ;
           if (response['objVesselContact']){
-            if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_1']))
-              vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_1']);
-            if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_2']))
-              vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_2']);
-            if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_3']))
-              vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_3']);
+            if(response['objVesselContact']['VesselContact']){
+              if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_1']))
+                vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_1']);
+              if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_2']))
+                vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_2']);
+              if(check_null(response['objVesselContact']['VesselContact']['TELEPHONE_3']))
+                vessel_contact_details['Telephone 1'] = link_tel(response['objVesselContact']['VesselContact']['TELEPHONE_3']);
+            }
           }
           if (check_null(response['EMAIL'])) vessel_contact_details['Email'] = '<a href="mailto:' + response['EMAIL']+'">' + response['EMAIL'] + '</a>';
           
           if (check_null(response['mobile-number']))
             mobile_num = response['mobile-number'];
-          else if (response['objVesselContact'] && response['objVesselContact']['VesselContact']['MOBILE'])
+          else if (response['objVesselContact'] && response['objVesselContact']['VesselContact'])
+            if(response['objVesselContact']['VesselContact']['MOBILE'])
             mobile_num = response['objVesselContact']['VesselContact']['MOBILE'];
 
           if(check_null(mobile_num)) vessel_contact_details['Mobile'] = link_tel(mobile_num);
@@ -487,13 +490,15 @@ else vessel_details_arr['Management Type'] += '- )';
 
           var crew_list = new Array();
           if (response['objCrewList']) {
-            for(var i = 0; i < response['objCrewList']['CrewList'].length; ++i) {
-              var rank = response['objCrewList']['CrewList'][i]['RANK'];
-              var name = response['objCrewList']['CrewList'][i]['FIRST_NAME'] + ' ';
-              if (check_null(response['objCrewList']['CrewList'][i]['MIDDLE_NAME'])) name += ' ' +response['objCrewList']['CrewList'][i]['MIDDLE_NAME'];
-              name += response['objCrewList']['CrewList'][i]['SUR_NAME'];
-              name += ' (' + response['objCrewList']['CrewList'][i]['COUNTRY_NAME']+')';
-              crew_list[toTitleCase(rank)] = toTitleCase(name);
+            if(response['objCrewList']['CrewList']){
+              for(var i = 0; i < response['objCrewList']['CrewList'].length; ++i) {
+                var rank = response['objCrewList']['CrewList'][i]['RANK'];
+                var name = response['objCrewList']['CrewList'][i]['FIRST_NAME'] + ' ';
+                if (check_null(response['objCrewList']['CrewList'][i]['MIDDLE_NAME'])) name += ' ' +response['objCrewList']['CrewList'][i]['MIDDLE_NAME'];
+                name += response['objCrewList']['CrewList'][i]['SUR_NAME'];
+                name += ' (' + response['objCrewList']['CrewList'][i]['COUNTRY_NAME']+')';
+                crew_list[toTitleCase(rank)] = toTitleCase(name);
+              }
             }
           }
           // crew_list['Master'] = 'Sagar, BSMIN';

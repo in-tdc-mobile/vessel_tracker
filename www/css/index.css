@@ -238,7 +238,15 @@ h1 {
     position: fixed;
     left: 50%;
     top: 50%;
-    opacity: .7;
+    opacity: 1;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.spinner img{
+    margin: 5px;
 }
 
 #ajax_error {
@@ -303,9 +311,9 @@ h1 {
 }
 
 #my_top_bar {
-    background-color: #494949;
-    background-image: -webkit-linear-gradient(top, #494949 0, #000000 100%);
-    background-image: linear-gradient(to bottom, #494949 0, #000000 100%);
+    background-color: #3b5998;
+/*    background-image: -webkit-linear-gradient(top, #494949 0, #000000 100%);
+    background-image: linear-gradient(to bottom, #494949 0, #000000 100%);*/
 }
 
 .my_top_button {
@@ -315,8 +323,8 @@ h1 {
 }
 
 #top_home,#top_search,#top_refresh, #top_settings, #top_worldmap{
-    background-image: -webkit-linear-gradient(top, #646464 0, #161616 100%);
-    background-image: linear-gradient(to bottom, #646464 0, #161616 100%);
+ /*   background-image: -webkit-linear-gradient(top, #646464 0, #161616 100%);
+    background-image: linear-gradient(to bottom, #646464 0, #161616 100%);*/
 border: 1px solid #141414;
 }
 
@@ -358,7 +366,7 @@ border: 1px solid #141414;
 }
 
 .login_title {
-    font-size: 22px;
+    font-size: 16px;
     font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     /*margin-top: 50px;
     margin-bottom: 50px;*/

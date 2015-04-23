@@ -166,7 +166,7 @@ a {
   right: 0;
   left: 0;
   z-index: 10;
-  height: 44px;
+  height: 45px;
   padding: 5px;
   box-sizing: border-box;
 }
@@ -206,8 +206,8 @@ a {
   display: -webkit-box;
   display: box;
   background-color: #1eb0e9;
-  background-image: -webkit-linear-gradient(top, #1eb0e9 0, #109adc 100%);
-  background-image: linear-gradient(to bottom, #1eb0e9 0, #109adc 100%);
+/*  background-image: -webkit-linear-gradient(top, #1eb0e9 0, #109adc 100%);
+  background-image: linear-gradient(to bottom, #1eb0e9 0, #109adc 100%);*/
   border-bottom: 1px solid #0e5895;
   box-shadow: inset 0 1px 1px -1px rgba(255, 255, 255, .8);
   -webkit-box-orient: horizontal;
@@ -221,9 +221,9 @@ a {
   left: 0;
   display: block;
   width: 100%;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  line-height: 44px;
+  line-height: 40px;
   color: #fff;
   text-align: center;
   text-shadow: 0 -1px rgba(0, 0, 0, .5);
@@ -310,8 +310,8 @@ a {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
   background-color: #1eb0e9;
-  background-image: -webkit-linear-gradient(top, #1eb0e9 0, #0984c6 100%);
-  background-image: linear-gradient(to bottom, #1eb0e9 0, #0984c6 100%);
+  background-image: -webkit-linear-gradient(top, #6184CE 0, #2E477C 100%);
+  background-image: linear-gradient(to bottom, #6184CE 0, #2E477C 100%);
   border: 1px solid #0e5895;
   box-shadow: 0 1px rgba(255, 255, 255, .25);
   -webkit-box-flex: 0;
@@ -989,8 +989,8 @@ select {
   padding: 5px;
   margin-left: -146px;
   background-color: #555;
-  background-image: -webkit-linear-gradient(top, #555 5%, #555 6%, #111 30%);
-  background-image: linear-gradient(to bottom, #555 5%, #555 6%,#111 30%);
+  background-image: -webkit-linear-gradient(top, #223969 5%, #223969 6%, #223969 30%);
+  background-image: linear-gradient(to bottom, #223969 5%, #223969 6%,#223969 30%);
   border: 1px solid #111;
   border-radius: 6px;
   opacity: 0;
@@ -1021,7 +1021,7 @@ select {
   top: -19px;
   margin-left: -20px;
   border-right: 20px solid transparent;
-  border-bottom: 20px solid #555;
+  border-bottom: 20px solid #223969;
   border-left: 20px solid transparent;
 }
 
@@ -1055,9 +1055,9 @@ select {
   line-height: 22px;
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
-  background-color: #454545;
-  background-image: -webkit-linear-gradient(top, #454545 0, #353535 100%);
-  background-image: linear-gradient(to bottom, #454545 0, #353535 100%);
+  background-color: #6184CE;
+  background-image: -webkit-linear-gradient(top, #6184CE 0, #2E477C 100%);
+  background-image: linear-gradient(to bottom, #6184CE 0, #2E477C 100%);
   border: 1px solid #111;
   -webkit-box-flex: 0;
           box-flex: 0;

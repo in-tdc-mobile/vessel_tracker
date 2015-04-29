@@ -16,6 +16,7 @@
      * specific language governing permissions and limitations
      * under the License.
      */
+     var ajax_url = 'https://getVesselTracker.com/vessel_tracker_democustomer'
 
      var vessel_markers_with_imo = new Array();
      var vessel_markers = new Array();
@@ -160,7 +161,7 @@
           'gcm_registry_id': push_reg_id
         };
         req = $.ajax({
-          url: 'https://getVesselTracker.com/register_push_device.php',
+          url: ajax_url + '/register_push_device.php',
           type: "post",
           data: form_data,
           // tryCount : 0,
@@ -355,7 +356,7 @@ function print_array_to_div(input_array, heading) {
 
     function fetch_vessel_wiki(imo) {  
       req = $.ajax({
-        url: 'https://getVesselTracker.com/get_vessel_wiki.php?imo='+ imo + '&pal_user_id=' + $.jStorage.get("pal_user_id"),
+        url: ajax_url + '/get_vessel_wiki.php?imo='+ imo + '&pal_user_id=' + $.jStorage.get("pal_user_id"),
         beforeSend: function() {
           $(".spinner").css('display','inline');
           $(".spinner").center();
@@ -661,10 +662,10 @@ function print_favorites_result(my_array) {
            function fetch_results(query, sdc_settings, favorites) {
             var q2_url;
             if (favorites != null) {
-              q2_url = "https://getVesselTracker.com/vessel_tracker.php?source=purplefinder&favorites="+JSON.stringify(favorites) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
+              q2_url = ajax_url + "/vessel_tracker.php?source=purplefinder&favorites="+JSON.stringify(favorites) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
                 // RequestData(q2_url);
               } else {
-                q2_url = "https://getVesselTracker.com/vessel_tracker.php?source=purplefinder&vessel_name="+query+"&sdc_settings="+JSON.stringify(sdc_settings) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
+                q2_url = ajax_url + "/vessel_tracker.php?source=purplefinder&vessel_name="+query+"&sdc_settings="+JSON.stringify(sdc_settings) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
               }
               //console.debug(q2_url);
               GetMap();
@@ -757,7 +758,7 @@ return req;
 
 function update_auto_complete(sdc_settings_auto) {
   req = $.ajax({
-    url: 'https://getVesselTracker.com/get_vessel_names.php?sdc_settings='+sdc_settings_auto,
+    url: ajax_url + '/get_vessel_names.php?sdc_settings='+sdc_settings_auto,
         // type: "get",
         beforeSend: function() {
             // $(".spinner").css('display','inline');
@@ -1169,7 +1170,7 @@ function show_sdc_settings() {
         'password': password
       };
       req = $.ajax({
-        url: 'https://getVesselTracker.com/ldap_test.php',
+        url: ajax_url + '/ldap_test.php',
         type: "post",
         data: form_data,
         beforeSend: function() {
@@ -1486,7 +1487,7 @@ open_info_window = infowindow;
 
     function update_vessel_positions() {
       //map.entities.clear();
-      var qr_url = 'https://getVesselTracker.com/get_vessel_positions.php?sdc_settings='+JSON.stringify(sdc_settings) + 
+      var qr_url = ajax_url + '/get_vessel_positions.php?sdc_settings='+JSON.stringify(sdc_settings) + 
       '&vtype_settings='+JSON.stringify(vtype_settings)
       + '&pal_user_id=' + $.jStorage.get("pal_user_id");
     /*  q2_url = "https://getVesselTracker.com/vessel_tracker.php?source=purplefinder&favorites="+JSON.stringify(favorites) + '&pal_user_id=' + $.jStorage.get("pal_user_id");
@@ -1668,7 +1669,7 @@ open_info_window = infowindow;
     function show_vessel_path(imo, degrees) {
       map.entities.remove(layer2 );
       closeInfobox();
-      var url = 'https://getVesselTracker.com/get_vessel_position_history.php?i-m-o-number='+imo;
+      var url = ajax_url + '/get_vessel_position_history.php?i-m-o-number='+imo;
       req = $.ajax({
         url: url,
         beforeSend: function() {
